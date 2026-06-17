@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIO 004 - Nine-Region Reporting Grid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1322;
+    --ink-soft:#14202F;
+    --gold:#D4A24C;
+    --terra:#C25A3E;
+    --terra-text:#7A2F18;
+    --teal-text:#2C5F66;
+    --rule-soft:#DCE0E6;
+    --gold-text:#6E5018;
+    --completed-border:#1E3D4C;
+    --completed-tint:#EDF1F3;
+    --page:#ffffff;
+    --surface:#fafaf9;
+    --shadow-card:0 1px 2px rgba(10,19,34,0.05);
+    --shadow-lift:0 6px 16px rgba(10,19,34,0.10), 0 3px 6px rgba(10,19,34,0.06);
+    --font-display:"Plus Jakarta Sans",system-ui,sans-serif;
+    --font-read:"Atkinson Hyperlegible",system-ui,sans-serif;
+    --font-meta:"DM Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;font-style:normal!important;}
+  body{
+    margin:0;
+    background:var(--page);
+    color:var(--ink-soft);
+    font-family:var(--font-read);
+    line-height:1.6;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;z-index:100;}
+  .skip:focus{left:8px;top:8px;}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 24px 56px;}
+
+  .eyebrow{
+    font-family:var(--font-meta);
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--terra-text);
+    font-weight:600;
+    margin:0 0 6px;
+  }
+  h1{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:28px;
+    color:var(--navy);
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+    line-height:1.12;
+  }
+  .lead{color:#3a4656;margin:0 0 22px;font-size:15px;}
+
+  .instruction{
+    border:1px solid var(--gold);
+    border-left:4px solid var(--gold);
+    border-radius:0 4px 4px 0;
+    background:#fff;
+    padding:14px 18px;
+    margin:0 0 24px;
+    font-size:15px;
+  }
+  .instruction strong{color:var(--gold-text);}
+
+  /* Orientation frame around the grid */
+  .grid-frame{
+    position:relative;
+    padding:34px 0 30px;
+    margin:0 0 8px;
+  }
+  .axis{
+    position:absolute;
+    font-family:var(--font-meta);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--teal-text);
+  }
+  .axis.top{top:6px;left:50%;transform:translateX(-50%);}
+  .axis.bottom{bottom:4px;left:50%;transform:translateX(-50%);}
+  .axis.left{top:50%;left:-2px;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;}
+  .axis.right{top:50%;right:-2px;transform:translateY(-50%);writing-mode:vertical-rl;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:0 44px;
+  }
+  .cell{
+    border:1px solid var(--rule-soft);
+    border-radius:4px;
+    background:#fff;
+    box-shadow:var(--shadow-card);
+    padding:18px 14px 16px;
+    min-height:128px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    transition:box-shadow .15s ease, border-color .15s ease;
+  }
+  .cell:hover{box-shadow:var(--shadow-lift);border-color:var(--gold);}
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;height:44px;
+    border-radius:99px;
+    background:var(--navy);
+    color:#fff;
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:22px;
+    margin-bottom:10px;
+  }
+  .region{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:14px;
+    color:var(--navy);
+    line-height:1.25;
+  }
+  .pos{
+    font-family:var(--font-meta);
+    font-size:11px;
+    color:var(--teal-text);
+    margin-top:4px;
+  }
+
+  .orient-note{
+    font-family:var(--font-meta);
+    font-size:13px;
+    color:var(--teal-text);
+    text-align:center;
+    margin:0 0 28px;
+  }
+
+  /* Reference list */
+  h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:17px;
+    color:var(--navy);
+    margin:30px 0 10px;
+  }
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule-soft);}
+  thead th{
+    font-family:var(--font-meta);
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--teal-text);
+    border-bottom:2px solid var(--navy);
+    font-weight:600;
+  }
+  tbody tr:last-child td{border-bottom:none;}
+  td.let{font-family:var(--font-display);font-weight:800;color:var(--navy);width:48px;}
+  td.region-name{font-family:var(--font-display);font-weight:600;color:var(--navy);}
+
+  footer.doc-foot{
+    border-top:2px solid var(--navy);
+    padding-top:16px;
+    margin-top:36px;
+    font-family:var(--font-meta);
+    font-size:12px;
+    color:var(--teal-text);
+  }
+
+  @media (max-width:520px){
+    .grid{margin:0 38px;gap:7px;}
+    .cell{min-height:104px;padding:12px 8px;}
+    .badge{width:38px;height:38px;font-size:18px;}
+    .region{font-size:12px;}
+  }
+  @media print{
+    .skip{display:none;}
+    .cell{break-inside:avoid;box-shadow:none;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .cell{transition:none;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#grid">Skip to grid</a>
+
+<div class="wrap" id="grid">
+  <p class="eyebrow">BIO 004 &middot; Body Cavities and Regions &middot; Intro Practice</p>
+  <h1>Nine-Region Reporting Grid</h1>
+  <p class="lead">Use this grid for Part B of the application exercise. Each abdominopelvic region carries a letter. Report the letter of the region where your team expects the finding.</p>
+
+  <div class="instruction">
+    <strong>How to report:</strong> Pick the single region your team expects the finding to sit in, then submit its letter (A through I) in InteDashboard. No marking required.
+  </div>
+
+  <div class="grid-frame">
+    <span class="axis top">Superior</span>
+    <span class="axis bottom">Inferior</span>
+    <span class="axis left">Patient's right</span>
+    <span class="axis right">Patient's left</span>
+
+    <div class="grid" role="img" aria-label="Three by three abdominopelvic region grid, oriented as you face the patient. Top row from your left: A right hypochondriac, B epigastric, C left hypochondriac. Middle row: D right lumbar, E umbilical, F left lumbar. Bottom row: G right iliac, H hypogastric, I left iliac.">
+      <div class="cell"><span class="badge">A</span><span class="region">Right hypochondriac</span><span class="pos">Upper right</span></div>
+      <div class="cell"><span class="badge">B</span><span class="region">Epigastric</span><span class="pos">Upper center</span></div>
+      <div class="cell"><span class="badge">C</span><span class="region">Left hypochondriac</span><span class="pos">Upper left</span></div>
+
+      <div class="cell"><span class="badge">D</span><span class="region">Right lumbar</span><span class="pos">Middle right</span></div>
+      <div class="cell"><span class="badge">E</span><span class="region">Umbilical</span><span class="pos">Center</span></div>
+      <div class="cell"><span class="badge">F</span><span class="region">Left lumbar</span><span class="pos">Middle left</span></div>
+
+      <div class="cell"><span class="badge">G</span><span class="region">Right iliac</span><span class="pos">Lower right</span></div>
+      <div class="cell"><span class="badge">H</span><span class="region">Hypogastric</span><span class="pos">Lower center</span></div>
+      <div class="cell"><span class="badge">I</span><span class="region">Left iliac</span><span class="pos">Lower left</span></div>
+    </div>
+  </div>
+
+  <p class="orient-note">Oriented as you face the patient in anatomical position. The patient's right is on your left, so the right regions sit in the left column.</p>
+
+  <h2>Letter key</h2>
+  <table>
+    <thead><tr><th>Letter</th><th>Region</th><th>Grid position</th></tr></thead>
+    <tbody>
+      <tr><td class="let">A</td><td class="region-name">Right hypochondriac</td><td>Upper right</td></tr>
+      <tr><td class="let">B</td><td class="region-name">Epigastric</td><td>Upper center</td></tr>
+      <tr><td class="let">C</td><td class="region-name">Left hypochondriac</td><td>Upper left</td></tr>
+      <tr><td class="let">D</td><td class="region-name">Right lumbar</td><td>Middle right</td></tr>
+      <tr><td class="let">E</td><td class="region-name">Umbilical</td><td>Center</td></tr>
+      <tr><td class="let">F</td><td class="region-name">Left lumbar</td><td>Middle left</td></tr>
+      <tr><td class="let">G</td><td class="region-name">Right iliac (inguinal)</td><td>Lower right</td></tr>
+      <tr><td class="let">H</td><td class="region-name">Hypogastric (pubic)</td><td>Lower center</td></tr>
+      <tr><td class="let">I</td><td class="region-name">Left iliac (inguinal)</td><td>Lower left</td></tr>
+    </tbody>
+  </table>
+
+  <footer class="doc-foot">
+    BIO 004 Human Anatomy. Nine-region reporting grid for the Intro Practice application exercise. Dr. Sharilyn Rennie. MedMasters Launch Studio, A MedMasters Collaborative Company.
+  </footer>
+</div>
+
+<script>
+  (function(){
+    function sendHeight(){
+      var h = document.documentElement.scrollHeight;
+      if (window.parent !== window){
+        window.parent.postMessage({ id: "region_grid", frameHeight: h }, "*");
+      }
+    }
+    window.addEventListener("load", sendHeight);
+    window.addEventListener("resize", sendHeight);
+    if (typeof ResizeObserver !== "undefined"){
+      new ResizeObserver(sendHeight).observe(document.body);
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.setAttribute("target","_top"); });
+  })();
+</script>
+</body>
+</html>
