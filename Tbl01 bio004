@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TBL #1: Intro, Tissues &amp; Integumentary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1322;
+    --gold:#D4A24C;
+    --terra:#C25A3E;
+    --terra-text:#7A2F18;
+    --teal-text:#2C5F66;
+    --ink-soft:#14202F;
+    --rule-soft:#DCE0E6;
+    --navy-tint:#EDF1F3;
+    --navy-complete:#1E3D4C;
+    --white:#ffffff;
+    --offwhite:#fafaf9;
+    --shadow-card:0 1px 2px rgba(10,19,34,0.05);
+    --shadow-hover:0 6px 16px rgba(10,19,34,0.10), 0 3px 6px rgba(10,19,34,0.06);
+    --jakarta:'Plus Jakarta Sans',system-ui,sans-serif;
+    --reading:'Atkinson Hyperlegible','Plus Jakarta Sans',system-ui,sans-serif;
+    --dmsans:'DM Sans','Plus Jakarta Sans',system-ui,sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  em,i,cite,dfn,var,address{font-style:normal;}
+
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink-soft);
+    font-family:var(--jakarta);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px 80px;}
+
+  a{color:var(--teal-text);}
+  a:focus-visible,button:focus-visible,input:focus-visible,
+  summary:focus-visible,.pill:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+
+  .skip{
+    position:absolute;left:-9999px;top:0;background:var(--navy);color:var(--white);
+    padding:10px 16px;z-index:200;border-radius:4px;
+  }
+  .skip:focus{left:12px;top:12px;}
+
+  /* ===== HEADER ===== */
+  .masthead{
+    background:var(--navy);
+    color:var(--white);
+    padding:38px 24px 34px;
+    border-bottom:4px solid var(--gold);
+  }
+  .masthead .inner{max-width:980px;margin:0 auto;}
+  .brandline{
+    font-family:var(--dmsans);
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 16px;
+    font-weight:600;
+  }
+  .masthead h1{
+    font-family:var(--jakarta);
+    font-weight:800;
+    font-size:clamp(28px,5vw,42px);
+    line-height:1.08;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .meta-line{
+    display:flex;flex-wrap:wrap;gap:10px 26px;
+    font-family:var(--dmsans);
+    font-size:14px;
+    color:#cdd6df;
+    border-top:1px solid rgba(255,255,255,0.16);
+    padding-top:16px;
+    margin-top:4px;
+  }
+  .meta-line span b{color:var(--white);font-weight:600;}
+  .meta-line .label{
+    text-transform:uppercase;letter-spacing:0.1em;font-size:11px;
+    color:var(--gold);display:block;margin-bottom:2px;
+  }
+
+  /* ===== TOOLBAR ===== */
+  .toolbar{
+    position:sticky;top:0;z-index:120;
+    background:var(--white);
+    border-bottom:1px solid var(--rule-soft);
+    box-shadow:var(--shadow-card);
+  }
+  .toolbar .inner{
+    max-width:980px;margin:0 auto;padding:10px 20px;
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;
+  }
+  .timer-box{
+    display:flex;align-items:center;gap:8px;
+    border:1px solid var(--rule-soft);border-radius:4px;
+    padding:6px 8px;background:var(--offwhite);
+  }
+  .timer-readout{
+    font-family:var(--jakarta);font-weight:800;font-size:20px;
+    color:var(--navy);min-width:74px;text-align:center;
+    font-variant-numeric:tabular-nums;
+  }
+  .timer-readout.warn{color:var(--terra);}
+  .preset-row{display:flex;gap:6px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--jakarta);font-weight:700;font-size:13px;
+    border-radius:4px;border:1px solid var(--navy);
+    background:var(--navy);color:var(--white);
+    padding:8px 12px;cursor:pointer;line-height:1;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{box-shadow:var(--shadow-hover);transform:translateY(-1px);}
+  .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy);}
+  .btn.ghost{background:var(--white);color:var(--navy);}
+  .btn.small{font-size:12px;padding:6px 9px;}
+  .btn.preset{
+    background:var(--white);color:var(--navy);border-color:var(--rule-soft);
+    font-weight:600;font-size:12px;padding:6px 9px;
+  }
+  .btn.preset.active{background:var(--navy);color:var(--white);border-color:var(--navy);}
+  .toolbar-spacer{flex:1 1 auto;}
+
+  /* ===== NAV PILLS ===== */
+  .pillnav{
+    max-width:980px;margin:18px auto 0;padding:0 20px;
+    display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .pill{
+    font-family:var(--dmsans);font-weight:600;font-size:13px;
+    border:1px solid var(--rule-soft);border-radius:99px;
+    background:var(--white);color:var(--ink-soft);
+    padding:7px 15px;cursor:pointer;line-height:1;
+    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  }
+  .pill:hover{border-color:var(--navy);box-shadow:var(--shadow-hover);transform:translateY(-1px);}
+
+  /* ===== SECTIONS ===== */
+  section{margin-top:46px;scroll-margin-top:140px;}
+  .eyebrow{
+    font-family:var(--dmsans);font-size:12px;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--terra-text);font-weight:600;
+    margin:0 0 6px;
+  }
+  h2{
+    font-family:var(--jakarta);font-weight:800;font-size:26px;
+    color:var(--navy);margin:0 0 8px;letter-spacing:-0.01em;
+  }
+  h3{
+    font-family:var(--jakarta);font-weight:700;font-size:18px;
+    color:var(--navy);margin:26px 0 10px;
+  }
+  .lead{font-family:var(--reading);font-size:16px;color:var(--ink-soft);margin:0 0 18px;max-width:72ch;}
+  .reading{font-family:var(--reading);}
+
+  .card{
+    background:var(--white);border:1px solid var(--rule-soft);border-radius:4px;
+    box-shadow:var(--shadow-card);padding:20px 22px;margin:14px 0;
+  }
+  .card.tint{background:var(--offwhite);}
+
+  /* objectives */
+  ol.objectives{list-style:none;counter-reset:lo;margin:0;padding:0;}
+  ol.objectives li{
+    counter-increment:lo;position:relative;
+    padding:14px 16px 14px 56px;border:1px solid var(--rule-soft);
+    border-radius:4px;background:var(--white);margin:10px 0;
+    font-family:var(--reading);box-shadow:var(--shadow-card);
+  }
+  ol.objectives li::before{
+    content:"LO" counter(lo);
+    position:absolute;left:12px;top:12px;
+    background:var(--navy);color:var(--white);
+    font-family:var(--jakarta);font-weight:700;font-size:12px;
+    padding:5px 7px;border-radius:4px;line-height:1;
+  }
+
+  /* prework */
+  .prework-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;justify-content:space-between;}
+  .progress-tag{
+    font-family:var(--jakarta);font-weight:700;font-size:13px;color:var(--teal-text);
+    border:1px solid var(--rule-soft);border-radius:99px;padding:6px 14px;background:var(--offwhite);
+  }
+  .pw-item{
+    display:grid;grid-template-columns:30px 1fr;gap:14px;
+    border:1px solid var(--rule-soft);border-radius:4px;background:var(--white);
+    padding:16px 18px;margin:10px 0;box-shadow:var(--shadow-card);
+    transition:border-color .12s ease;
+  }
+  .pw-item.done{background:var(--navy-tint);border:1px solid var(--navy-complete);}
+  .pw-item input[type=checkbox]{width:22px;height:22px;margin-top:2px;accent-color:var(--navy-complete);cursor:pointer;}
+  .pw-body h4{font-family:var(--jakarta);font-weight:700;font-size:15px;margin:0 0 4px;color:var(--navy);}
+  .pw-body .crit{font-family:var(--reading);font-size:14px;margin:6px 0 0;color:var(--ink-soft);}
+  .pw-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+  .chip{
+    font-family:var(--dmsans);font-size:11px;font-weight:600;letter-spacing:0.04em;
+    border-radius:99px;padding:4px 10px;background:var(--offwhite);
+    border:1px solid var(--rule-soft);color:var(--teal-text);
+  }
+  .chip.time{background:var(--navy);color:var(--white);border-color:var(--navy);}
+
+  /* RAT questions */
+  .q{
+    border:1px solid var(--rule-soft);border-radius:4px;background:var(--white);
+    padding:18px 20px;margin:14px 0;box-shadow:var(--shadow-card);
+  }
+  .q .qhead{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .qnum{
+    font-family:var(--jakarta);font-weight:800;font-size:14px;color:var(--white);
+    background:var(--navy);border-radius:4px;padding:5px 9px;line-height:1;
+  }
+  .dok{
+    font-family:var(--dmsans);font-size:11px;font-weight:600;letter-spacing:0.06em;
+    text-transform:uppercase;border-radius:99px;padding:4px 10px;
+    border:1px solid var(--rule-soft);color:var(--teal-text);background:var(--offwhite);
+  }
+  .qtopic{font-family:var(--dmsans);font-size:12px;color:var(--terra-text);font-weight:600;margin-left:auto;}
+  .q .stem{font-family:var(--reading);font-size:15.5px;margin:0 0 12px;}
+  ol.opts{list-style:none;margin:0;padding:0;counter-reset:opt;}
+  ol.opts li{
+    counter-increment:opt;position:relative;padding:9px 12px 9px 42px;
+    border:1px solid var(--rule-soft);border-radius:4px;margin:7px 0;
+    font-family:var(--reading);font-size:14.5px;background:var(--white);
+  }
+  ol.opts li::before{
+    content:counter(opt,upper-alpha);
+    position:absolute;left:10px;top:8px;
+    font-family:var(--jakarta);font-weight:700;font-size:13px;color:var(--navy);
+    border:1px solid var(--rule-soft);border-radius:4px;width:22px;height:22px;
+    display:flex;align-items:center;justify-content:center;background:var(--offwhite);
+  }
+
+  .callout{
+    border-left:4px solid var(--gold);background:var(--offwhite);
+    border-radius:4px;padding:14px 18px;margin:16px 0;font-family:var(--reading);
+  }
+  .callout.terra{border-left-color:var(--terra);}
+  .callout.navy{border-left-color:var(--navy);}
+  .callout h4{font-family:var(--jakarta);font-weight:700;font-size:14px;margin:0 0 6px;color:var(--navy);text-transform:none;}
+
+  /* application */
+  .stimulus{border:1px solid var(--navy);border-radius:4px;background:var(--navy-tint);padding:20px 22px;}
+  .stimulus h3{margin-top:0;}
+  .vitals{font-family:var(--dmsans);font-size:13px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px 18px;margin-top:12px;}
+  .vitals div{border-top:1px solid var(--rule-soft);padding-top:6px;}
+  .vitals .label{display:block;text-transform:uppercase;letter-spacing:0.08em;font-size:10px;color:var(--teal-text);font-weight:600;}
+
+  .choice-options{display:grid;gap:10px;margin:12px 0;}
+  .choice{
+    border:1px solid var(--rule-soft);border-radius:4px;padding:14px 16px;background:var(--white);
+    box-shadow:var(--shadow-card);
+  }
+  .choice .clabel{font-family:var(--jakarta);font-weight:700;color:var(--navy);font-size:15px;}
+  .choice .cdesc{font-family:var(--reading);font-size:14px;margin-top:4px;}
+
+  .branch{border:1px solid var(--rule-soft);border-radius:4px;padding:16px 18px;margin:10px 0;background:var(--white);box-shadow:var(--shadow-card);}
+  .branch .btag{font-family:var(--dmsans);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--terra-text);}
+  .branch h4{font-family:var(--jakarta);font-weight:700;font-size:15px;margin:4px 0 8px;color:var(--navy);}
+
+  table.s{width:100%;border-collapse:collapse;font-family:var(--reading);font-size:14px;margin:12px 0;}
+  table.s th,table.s td{border:1px solid var(--rule-soft);padding:9px 11px;text-align:left;vertical-align:top;}
+  table.s th{background:var(--navy);color:var(--white);font-family:var(--jakarta);font-weight:600;font-size:13px;}
+  table.s tr:nth-child(even) td{background:var(--offwhite);}
+
+  /* facilitation timeline */
+  ul.timeline{list-style:none;margin:0;padding:0;}
+  ul.timeline li{
+    display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:start;
+    border-left:2px solid var(--rule-soft);padding:10px 0 10px 16px;margin-left:6px;
+  }
+  ul.timeline li .clock{font-family:var(--jakarta);font-weight:800;color:var(--navy);font-size:14px;font-variant-numeric:tabular-nums;}
+  ul.timeline li .what{font-family:var(--reading);font-size:14.5px;}
+  ul.timeline li .what b{font-family:var(--jakarta);font-weight:700;color:var(--navy);}
+
+  ul.plain{font-family:var(--reading);padding-left:20px;}
+  ul.plain li{margin:7px 0;}
+
+  /* answer center reveal */
+  .reveal-bar{
+    border:1px dashed var(--rule-soft);border-radius:4px;background:var(--offwhite);
+    padding:22px;text-align:center;margin:14px 0;
+  }
+  .reveal-bar p{font-family:var(--reading);margin:0 0 12px;color:var(--teal-text);}
+  #answerCenter[hidden]{display:none;}
+
+  .keytable th,.keytable td{text-align:center;}
+  .keytable td.concept{text-align:left;font-size:13px;}
+  .ans{font-family:var(--jakarta);font-weight:800;color:var(--navy);font-size:16px;}
+
+  .ratq{border:1px solid var(--rule-soft);border-radius:4px;padding:16px 18px;margin:12px 0;background:var(--white);}
+  .ratq .rq-stem{font-family:var(--jakarta);font-weight:700;color:var(--navy);font-size:15px;margin:0 0 6px;}
+  .ratq .correct{font-family:var(--reading);font-size:14px;border-left:4px solid var(--navy-complete);background:var(--navy-tint);padding:8px 12px;border-radius:4px;margin:8px 0;}
+  .ratq ul.why{list-style:none;margin:8px 0 0;padding:0;font-family:var(--reading);font-size:13.5px;}
+  .ratq ul.why li{padding:6px 0;border-top:1px solid var(--rule-soft);}
+  .ratq ul.why li b{color:var(--terra-text);}
+
+  footer{margin-top:60px;border-top:1px solid var(--rule-soft);padding-top:22px;font-family:var(--dmsans);font-size:12.5px;color:var(--teal-text);}
+
+  /* ===== PRINT SCOPING ===== */
+  @media print{
+    .toolbar,.pillnav,.skip,.reveal-bar,.btn{display:none !important;}
+    body{font-size:12px;}
+    section{margin-top:24px;page-break-inside:auto;}
+    .q,.pw-item,.ratq,.branch,.card{page-break-inside:avoid;}
+    .masthead{border-bottom:3px solid var(--gold);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .masthead,.qnum,table.s th,.chip.time,ol.objectives li::before{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+  body.print-student #facilitation,
+  body.print-student #answerCenter{display:none !important;}
+  @media print{
+    body.print-student #facilitation,
+    body.print-student #answerCenter{display:none !important;}
+  }
+
+  @media (max-width:640px){
+    .meta-line{flex-direction:column;gap:12px;}
+    ul.timeline li{grid-template-columns:72px 1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="inner">
+    <p class="brandline">MedMasters Launch Studio (A MedMasters Collaborative Company)</p>
+    <h1>TBL #1: Intro, Tissues &amp; Integumentary</h1>
+    <div class="meta-line">
+      <span><span class="label">Course</span><b>BIOL OO4 Human Anatomy</b></span>
+      <span><span class="label">Instructor</span><b>Dr. Rennie</b></span>
+      <span><span class="label">Session</span><b>60 minutes</b></span>
+      <span><span class="label">Readiness Assurance</span><b>iRAT &middot; tRAT &middot; Application</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar" role="region" aria-label="Facilitation controls">
+  <div class="inner">
+    <div class="timer-box">
+      <span class="timer-readout" id="timer" aria-live="polite">12:00</span>
+      <button class="btn small" id="timerStart">Start</button>
+      <button class="btn small ghost" id="timerReset">Reset</button>
+    </div>
+    <div class="preset-row" aria-label="Phase presets">
+      <button class="btn preset active" data-min="12" data-label="iRAT">iRAT 12</button>
+      <button class="btn preset" data-min="12" data-label="tRAT">tRAT 12</button>
+      <button class="btn preset" data-min="8" data-label="Clarify">Clarify 8</button>
+      <button class="btn preset" data-min="22" data-label="Application">App 22</button>
+      <button class="btn preset" data-min="6" data-label="Debrief">Debrief 6</button>
+    </div>
+    <div class="toolbar-spacer"></div>
+    <button class="btn ghost small" id="printStudent">Print student packet</button>
+    <button class="btn small" id="printFull">Print full doc</button>
+  </div>
+</div>
+
+<nav class="pillnav" aria-label="Section navigation">
+  <button class="pill" data-go="objectives">Objectives</button>
+  <button class="pill" data-go="prework">Prework</button>
+  <button class="pill" data-go="irat">iRAT</button>
+  <button class="pill" data-go="trat">tRAT</button>
+  <button class="pill" data-go="application">Application</button>
+  <button class="pill" data-go="facilitation">Facilitation</button>
+  <button class="pill" data-go="answerCenter">Answer center</button>
+</nav>
+
+<main class="wrap" id="main">
+
+  <!-- ============ OBJECTIVES ============ -->
+  <section id="objectives">
+    <p class="eyebrow">Backward designed from the application</p>
+    <h2>Learning objectives</h2>
+    <p class="lead">These five objectives were derived from the Week 1 notes and scoped to the high-yield set for this session. Review and adjust before posting. All objectives are anatomy only, with no physiology mechanism included.</p>
+    <ol class="objectives">
+      <li>Trace a secreted protein through the endomembrane system from rough ER to exocytosis, and match cell organelles and surface specializations to the jobs they perform.</li>
+      <li>Differentiate the parietal and visceral layers of the three serous membranes, and map the four mediastinal compartments to one key structure each.</li>
+      <li>Classify abdominopelvic organs as intraperitoneal or retroperitoneal using SADPUCKER, and predict how that relationship changes where bleeding or pain presents.</li>
+      <li>Classify epithelial and connective tissues by their naming axes, and match each tissue and cell junction to its structural function.</li>
+      <li>Order the layers of the skin and the five epidermal strata, and map burn depth and injection depth onto the layers involved.</li>
+    </ol>
+  </section>
+
+  <!-- ============ PREWORK ============ -->
+  <section id="prework">
+    <p class="eyebrow">Complete before class</p>
+    <div class="prework-head">
+      <h2>Prework checklist</h2>
+      <span class="progress-tag" id="pwProgress">0 of 5 complete</span>
+    </div>
+    <p class="lead">Each item lists a time estimate and a written completion criterion. Arrive having produced the written output named under each item. The iRAT assumes every item below is done.</p>
+
+    <div class="pw-item" data-pw="1">
+      <input type="checkbox" id="pw1" aria-label="Mark prework item 1 complete">
+      <div class="pw-body">
+        <h4>1. Watch the Language of Anatomy and Body Cavities videos, read Week 1 Notes pp. 3 to 10</h4>
+        <p class="crit"><b>Completion:</b> In writing, name every subdivision of the dorsal and ventral cavities, and list the four mediastinal compartments with one structure in each.</p>
+        <div class="pw-meta"><span class="chip time">35 min</span><span class="chip">Cavities, mediastinum, serous membranes</span></div>
+      </div>
+    </div>
+
+    <div class="pw-item" data-pw="2">
+      <input type="checkbox" id="pw2" aria-label="Mark prework item 2 complete">
+      <div class="pw-body">
+        <h4>2. Watch the Cell Anatomy video, read pp. 11 to 13</h4>
+        <p class="crit"><b>Completion:</b> Write the ordered path of a secreted protein from rough ER to exocytosis, and list two membranous and two non membranous organelles with their jobs.</p>
+        <div class="pw-meta"><span class="chip time">25 min</span><span class="chip">Cell anatomy, endomembrane system</span></div>
+      </div>
+    </div>
+
+    <div class="pw-item" data-pw="3">
+      <input type="checkbox" id="pw3" aria-label="Mark prework item 3 complete">
+      <div class="pw-body">
+        <h4>3. Watch the Histology video, read pp. 14 to 18</h4>
+        <p class="crit"><b>Completion:</b> Build a table of the four tissue types with function, one location, and one defining feature, and classify epithelium on both naming axes.</p>
+        <div class="pw-meta"><span class="chip time">35 min</span><span class="chip">Epithelial and connective tissue</span></div>
+      </div>
+    </div>
+
+    <div class="pw-item" data-pw="4">
+      <input type="checkbox" id="pw4" aria-label="Mark prework item 4 complete">
+      <div class="pw-body">
+        <h4>4. Watch the Integumentary video, read pp. 19 to 21</h4>
+        <p class="crit"><b>Completion:</b> List the five epidermal strata deep to superficial, and map first, second, and third degree burns onto the skin layers each one reaches.</p>
+        <div class="pw-meta"><span class="chip time">25 min</span><span class="chip">Integumentary system</span></div>
+      </div>
+    </div>
+
+    <div class="pw-item" data-pw="5">
+      <input type="checkbox" id="pw5" aria-label="Mark prework item 5 complete">
+      <div class="pw-body">
+        <h4>5. SADPUCKER self quiz</h4>
+        <p class="crit"><b>Completion:</b> From memory, write all nine retroperitoneal structures, and note the parts that are exceptions, the first part of the duodenum, the tail of the pancreas, and the transverse and sigmoid colon.</p>
+        <div class="pw-meta"><span class="chip time">10 min</span><span class="chip">Retroperitoneum</span></div>
+      </div>
+    </div>
+    <p class="reading" style="font-size:14px;color:var(--teal-text);margin-top:14px;">Total estimated prework: about 2 hours 10 minutes. Checkbox state saves on this device only.</p>
+  </section>
+
+  <!-- ============ iRAT ============ -->
+  <section id="irat">
+    <p class="eyebrow">Readiness assurance, individual</p>
+    <h2>iRAT</h2>
+    <p class="lead">Ten items, each one built to pull together two to four concepts at once. None can be answered by recalling a single fact. Every item asks you to read across systems, peritoneal relationships against cavity access, organelles against gland type, strata against cell type, so the test reasons like anatomy rather than marching topic by topic. The concept tag under each number names what the item integrates. Answer individually first, then keep this same set for the team round.</p>
+
+    <div class="q" data-q="1">
+      <div class="qhead"><span class="qnum">Q1</span><span class="dok">DOK 3</span><span class="qtopic">Serous layers + mediastinum + access route</span></div>
+      <p class="stem">A fluid collection forms around the heart, in the space between the parietal and visceral layers of the serous membrane. Which option correctly identifies that space, the mediastinal compartment the heart sits in, and the procedure used to drain it?</p>
+      <ol class="opts">
+        <li>The fluid lies between the visceral and parietal pleura in the anterior mediastinum, drained by thoracentesis</li>
+        <li>The fluid lies in the pericardial cavity in the superior mediastinum, drained by paracentesis</li>
+        <li>The fluid lies in the pericardial cavity between the parietal and visceral serous pericardium in the middle mediastinum, drained by pericardiocentesis</li>
+        <li>The fluid lies between the epicardium and the fibrous pericardium in the posterior mediastinum, drained by lumbar puncture</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="2">
+      <div class="qhead"><span class="qnum">Q2</span><span class="dok">DOK 3</span><span class="qtopic">Quadrant map + peritoneal relationship + bleed behavior</span></div>
+      <p class="stem">A wound enters the left upper quadrant. Two organs there differ in their peritoneal relationship, and that difference predicts how blood from each would behave. Which pairing is correct?</p>
+      <ol class="opts">
+        <li>The spleen is intraperitoneal, so its blood spreads freely; the left kidney is retroperitoneal, so its blood stays contained and presents as flank pain</li>
+        <li>The spleen is retroperitoneal, so its blood stays contained; the left kidney is intraperitoneal, so its blood spreads freely</li>
+        <li>Both the spleen and the left kidney are intraperitoneal, so blood from either spreads freely through the cavity</li>
+        <li>Both the spleen and the left kidney are retroperitoneal, so both present only as flank pain</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="3">
+      <div class="qhead"><span class="qnum">Q3</span><span class="dok">DOK 3</span><span class="qtopic">Epithelial class + anchoring structure + avascular property</span></div>
+      <p class="stem">A surface must protect against heavy abrasion, sits on connective tissue it is anchored to, and has no blood vessels of its own. Which option correctly describes the epidermis: its tissue classification, what anchors it, and how it gets its blood supply?</p>
+      <ol class="opts">
+        <li>Simple squamous epithelium anchored by a mucous membrane, fed by its own capillaries</li>
+        <li>Transitional epithelium anchored by tight junctions, richly vascular</li>
+        <li>Pseudostratified columnar epithelium anchored by a mesentery, avascular</li>
+        <li>Stratified squamous epithelium anchored to the basement membrane, avascular and fed by diffusion from the dermis</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="4">
+      <div class="qhead"><span class="qnum">Q4</span><span class="dok">DOK 3</span><span class="qtopic">Organelles + gland duct type + release mode</span></div>
+      <p class="stem">A gland cell builds a protein product, packages it through the Golgi into secretory vesicles, releases it intact, and has no duct. Which set correctly names its prominent organelles, the gland's duct classification, and its release mode?</p>
+      <ol class="opts">
+        <li>Smooth ER prominent; exocrine; holocrine release</li>
+        <li>Rough ER and Golgi prominent; endocrine; merocrine release</li>
+        <li>Free ribosomes only; endocrine; apocrine release</li>
+        <li>Rough ER prominent; exocrine; holocrine release</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="5">
+      <div class="qhead"><span class="qnum">Q5</span><span class="dok">DOK 3</span><span class="qtopic">Epidermal strata + cell types + healing</span></div>
+      <p class="stem">A burn blisters into the dermis but spares the deepest epidermal layer. Which layer's survival lets the epidermis regenerate, and which epidermal cell does the regenerating?</p>
+      <ol class="opts">
+        <li>The stratum corneum survives, and melanocytes regenerate the epidermis</li>
+        <li>The stratum lucidum survives, and dendritic (Langerhans) cells regenerate the epidermis</li>
+        <li>The stratum basale survives, and keratinocytes divide there to regenerate the epidermis</li>
+        <li>The stratum granulosum survives, and tactile (Merkel) cells regenerate the epidermis</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="6">
+      <div class="qhead"><span class="qnum">Q6</span><span class="dok">DOK 3</span><span class="qtopic">Connective subtype + fiber arrangement + germ layer + failure mode</span></div>
+      <p class="stem">A structure is strong in one direction because of parallel collagen, arises from the middle germ layer like most connective tissue, and tears when twisted rather than pulled straight. Which structure and classification fit all three clues?</p>
+      <ol class="opts">
+        <li>A tendon of dense regular connective tissue from mesoderm</li>
+        <li>A tendon of dense irregular connective tissue from ectoderm</li>
+        <li>The dermis of dense regular connective tissue from endoderm</li>
+        <li>A ligament of areolar connective tissue from mesoderm</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="7">
+      <div class="qhead"><span class="qnum">Q7</span><span class="dok">DOK 3</span><span class="qtopic">Two junctions + cytoskeletal link + protein + location</span></div>
+      <p class="stem">Two junctions both use cadherins but do different jobs: one forms an adhesion belt linked to microfilaments, the other forms plaques linked to intermediate filaments that resist pulling in the epidermis and cardiac muscle. Which pairing names them correctly?</p>
+      <ol class="opts">
+        <li>Tight junction (belt, microfilaments) and gap junction (plaques, intermediate filaments)</li>
+        <li>Adherens junction (belt, microfilaments) and desmosome (plaques, intermediate filaments)</li>
+        <li>Desmosome (belt, microfilaments) and hemidesmosome (plaques, intermediate filaments)</li>
+        <li>Gap junction (belt, microfilaments) and tight junction (plaques, intermediate filaments)</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="8">
+      <div class="qhead"><span class="qnum">Q8</span><span class="dok">DOK 2</span><span class="qtopic">Regional term + directional term + imaging plane</span></div>
+      <p class="stem">A wound is charted on the anterior, distal forearm, and a CT is ordered through that level. Which line correctly names the region, the meaning of distal, and the imaging plane the CT slice produces?</p>
+      <ol class="opts">
+        <li>Brachial region; distal means closer to the trunk; the CT slice is a frontal section</li>
+        <li>Antebrachial region; proximal means farther from the trunk; the CT slice is a sagittal section</li>
+        <li>Carpal region; distal means closer to the shoulder; the CT slice is an oblique section</li>
+        <li>Antebrachial region; distal means farther from the trunk; the CT slice is a transverse section</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="9">
+      <div class="qhead"><span class="qnum">Q9</span><span class="dok">DOK 3</span><span class="qtopic">Serous membrane build + tissue type + membrane comparison</span></div>
+      <p class="stem">The serous membranes that line the ventral cavities are built from a specific epithelium over connective tissue. Which option correctly names that tissue and explains how a serous membrane differs from a synovial membrane?</p>
+      <ol class="opts">
+        <li>Simple squamous epithelium, the mesothelium, over areolar connective tissue; it differs from the synovial membrane, which is connective tissue only with no epithelium</li>
+        <li>Stratified squamous epithelium over dense connective tissue; it is the same construction as the synovial membrane</li>
+        <li>Pseudostratified epithelium over adipose tissue; it differs from the cutaneous membrane only by location</li>
+        <li>Transitional epithelium over reticular tissue; it is identical to a mucous membrane</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="10">
+      <div class="qhead"><span class="qnum">Q10</span><span class="dok">DOK 3</span><span class="qtopic">Quadrant pattern + peritoneal relationship + cavity access</span></div>
+      <p class="stem">An older adult has left lower quadrant pain, and separately a needle is planned to sample the peritoneal cavity. Which line correctly names the likely condition, the peritoneal relationship of the organ involved, and the procedure that samples that cavity?</p>
+      <ol class="opts">
+        <li>Appendicitis; the cecum is intraperitoneal; the peritoneal cavity is sampled by thoracentesis</li>
+        <li>Diverticulitis; the sigmoid colon is intraperitoneal; the peritoneal cavity is sampled by paracentesis</li>
+        <li>Diverticulitis; the descending colon is retroperitoneal; the peritoneal cavity is sampled by pericardiocentesis</li>
+        <li>Splenic injury; the spleen is intraperitoneal; the peritoneal cavity is sampled by lumbar puncture</li>
+      </ol>
+    </div>
+
+    <h3>Additional items</h3>
+    <p class="reading" style="font-size:14px;">Two more items, ready to swap in for any two above to hold the set at ten, or to run as eleven and twelve. Item 11, the arrector pili, is covered in the Week 1 prework. Item 12, melanin types and skin color, reaches past the Week 1 notes and is held at the observational, pigment level with no physiology mechanism. Add a matching prework line before using it in a graded RAT.</p>
+
+    <div class="q" data-q="11">
+      <div class="qhead"><span class="qnum">Q11</span><span class="dok">DOK 2</span><span class="qtopic">Accessory structure + muscle tissue type + control</span></div>
+      <p class="stem">Cold air raises goosebumps, the small bumps that appear when tiny muscles in the skin contract and pull the hairs upright. Which option correctly names that muscle, its muscle tissue type, and whether it is under voluntary or involuntary control?</p>
+      <ol class="opts">
+        <li>The arrector pili; smooth muscle; involuntary</li>
+        <li>The arrector pili; skeletal muscle; voluntary</li>
+        <li>The hair root plexus; smooth muscle; involuntary</li>
+        <li>The erector spinae; skeletal muscle; voluntary</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="12">
+      <div class="qhead"><span class="qnum">Q12</span><span class="dok">DOK 2</span><span class="qtopic">Melanin types + sources of skin color + diagnostic color</span></div>
+      <p class="stem">Skin color comes from three sources: the melanin made by melanocytes, the carotene in the tissue, and the blood in the dermal vessels showing through the epidermis. Melanin itself comes in two forms. Which option correctly names the two types of melanin and matches a diagnostic skin color to what you are seeing?</p>
+      <ol class="opts">
+        <li>Eumelanin and carotene are the two melanins, and cyanosis is the result of excess melanin</li>
+        <li>Melanin and hemoglobin are the two melanins, and pallor is the result of extra carotene</li>
+        <li>Eumelanin, brown to black, and pheomelanin, red to yellow, are the two melanins, and a bluish color (cyanosis) is the dark blood in the dermal vessels showing through the thin epidermis</li>
+        <li>Pheomelanin and bilirubin are the two melanins, and redness is the result of melanin loss</li>
+      </ol>
+    </div>
+
+    <div class="q" data-q="13">
+      <div class="qhead"><span class="qnum">Q13</span><span class="dok">DOK 2</span><span class="qtopic">Directional terms + mediastinal borders + bounding structures</span></div>
+      <p class="stem">The mediastinum sits between the two pleural cavities, bounded on every side by a named structure. Which option correctly matches each border, given by its directional term, to the structure that forms it?</p>
+      <ol class="opts">
+        <li>Anterior, the bodies of the thoracic vertebrae; posterior, the sternum; inferior, the thoracic inlet</li>
+        <li>Anterior, the sternum; posterior, the bodies of the thoracic vertebrae; inferior, the diaphragm</li>
+        <li>Superior, the diaphragm; inferior, the thoracic inlet; lateral, the sternum</li>
+        <li>Anterior, the diaphragm; posterior, the mediastinal pleura; superior, the thoracic vertebrae</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ tRAT ============ -->
+  <section id="trat">
+    <p class="eyebrow">Readiness assurance, team</p>
+    <h2>tRAT</h2>
+    <p class="lead">Teams answer the same ten items above by consensus, then reveal each answer simultaneously. Use scratch off cards or held up letter cards so every team commits at the same moment. Because each item integrates several concepts, expect the team talk to run longer per item than a recall quiz would. The full per option rationale for all ten items lives in the Answer center below, kept hidden until you reveal it, so you can screen share the iRAT without exposing keys.</p>
+    <div class="callout navy">
+      <h4>Run order for the team round</h4>
+      <p class="reading" style="margin:0;">Teams discuss and lock one answer per item, reveal simultaneously, then appeal any item they can defend from the notes. Hand scoring follows your usual scale. Walk only the items that split the room, the Answer center flags the likely split items.</p>
+    </div>
+  </section>
+
+  <!-- ============ APPLICATION ============ -->
+  <section id="application">
+    <p class="eyebrow">4S application exercise &middot; intermediate clinical reasoning</p>
+    <h2>Application: where is the bleed</h2>
+    <p class="lead">One shared problem, one specific committed choice, revealed simultaneously. The reasoning is purely anatomical: peritoneal relationships, serous cavities, and the boundary between the thoracic and abdominopelvic cavities. No physiology mechanism is required.</p>
+
+    <div class="stimulus">
+      <h3>Stimulus</h3>
+      <p class="reading" style="margin:0;">A 24 year old arrives after a single stab wound to the <b>left flank</b>, entry point just below the 12th rib and posterior to the midaxillary line. The abdomen is soft and not distended. Tenderness is sharply localized to the left flank and the left side of the back. Bruising tracks toward the flank rather than spreading across the belly. A focused scan reports a collection of fluid that does not move freely with patient position changes and sits against the posterior body wall on the left.</p>
+      <div class="vitals">
+        <div><span class="label">Wound site</span>Left flank, below 12th rib, posterior to midaxillary line</div>
+        <div><span class="label">Abdomen</span>Soft, not distended, no shifting dullness described</div>
+        <div><span class="label">Tenderness</span>Localized to left flank and back</div>
+        <div><span class="label">Fluid on scan</span>Posterior, left, does not move freely with position</div>
+      </div>
+    </div>
+
+    <div class="callout terra" style="margin-top:18px;">
+      <h4>Trigger: commit to one answer</h4>
+      <p class="reading" style="margin:0;">Based on the wound location and the pattern of findings, which single anatomical relationship best explains the source of the collection? Each team locks <b>one</b> letter and reveals it at the same moment as every other team.</p>
+    </div>
+
+    <div class="choice-options">
+      <div class="choice"><span class="clabel">A. Retroperitoneal source</span><p class="cdesc">The blade tracked into the retroperitoneum and struck a SADPUCKER structure, the left kidney or the aorta and IVC, so blood is trapped behind the parietal peritoneum and presents as flank and back tenderness.</p></div>
+      <div class="choice"><span class="clabel">B. Intraperitoneal source</span><p class="cdesc">The blade reached the spleen, an intraperitoneal organ in the left upper quadrant, so blood should spread freely through the peritoneal cavity and irritate it broadly.</p></div>
+      <div class="choice"><span class="clabel">C. Pleural source</span><p class="cdesc">Because the diaphragm domes upward and the wound sits below the 12th rib, the blade may have crossed the diaphragm into the left pleural cavity, making this a thoracic injury wearing an abdominal entry point.</p></div>
+    </div>
+
+    <h3>Branch questions, one reasoning path each</h3>
+    <p class="reading" style="font-size:14px;">After the simultaneous reveal, teams defend their committed letter using the branch that matches their choice, then respond to the other two.</p>
+
+    <div class="branch">
+      <span class="btag">Branch A &middot; the retroperitoneal path</span>
+      <h4>If you chose A, defend it from the anatomy.</h4>
+      <p class="reading" style="margin:0;">Which two findings in the stimulus point to a retroperitoneal source rather than an intraperitoneal one, and which SADPUCKER structures sit in the left flank in the path of this wound? Tie your answer to LO3.</p>
+    </div>
+
+    <div class="branch">
+      <span class="btag">Branch B &middot; the intraperitoneal path</span>
+      <h4>If you chose B, defend it from the anatomy.</h4>
+      <p class="reading" style="margin:0;">The spleen sits in the left upper quadrant and is intraperitoneal. What would you expect the abdomen and the fluid pattern to look like if the spleen were the source, and which single finding in the stimulus argues against free intraperitoneal blood? Tie your answer to LO2 and LO3.</p>
+    </div>
+
+    <div class="branch">
+      <span class="btag">Branch C &middot; the pleural path</span>
+      <h4>If you chose C, defend it from the anatomy.</h4>
+      <p class="reading" style="margin:0;">Explain how a wound below the 12th rib can enter the thoracic cavity, naming the boundary structure involved and the cavity reached. Which drainage procedure follows from a pleural source, and how does it differ from the procedure for an intraperitoneal collection? Tie your answer to LO2.</p>
+    </div>
+
+    <div class="callout navy" style="margin-top:18px;">
+      <h4>How this exercise satisfies the 4S framework</h4>
+      <ul class="plain" style="margin:0;">
+        <li><b>Significant problem.</b> Localizing a penetrating flank injury by anatomical compartment is a real problem clinicians face, and pre med students recognize it as professionally meaningful.</li>
+        <li><b>Same problem.</b> Every team works the identical stimulus and the identical committed choice. No team gets a different scenario.</li>
+        <li><b>Specific choice.</b> Teams commit to one letter, A, B, or C, from a narrow defined set. The task is a commitment, not an open ended discussion.</li>
+        <li><b>Simultaneous reporting.</b> All teams reveal their letter at the same moment using held up cards or a single timed submission.</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <h4>Where the defensible disagreement lives</h4>
+      <p class="reading" style="margin:0 0 8px;">At least three options carry a defensible argument, which is what drives the cross team debate:</p>
+      <ul class="plain" style="margin:0;">
+        <li><b>A is defensible</b> because the left kidney is retroperitoneal, the fluid does not move freely and sits against the posterior wall, and the pain is localized to the flank and back, the classic retroperitoneal pattern from the notes.</li>
+        <li><b>B is defensible</b> because the spleen sits in the left upper quadrant near this wound, and a team that weights organ proximity over the fluid behavior can argue for an intraperitoneal source.</li>
+        <li><b>C is defensible</b> because a sophisticated team reads the rib level and the upward dome of the diaphragm and argues the blade crossed into the pleural cavity, a real trap for a low posterior wound.</li>
+      </ul>
+      <p class="reading" style="margin:8px 0 0;">The findings as written tilt toward A, the fluid that does not move freely and sits posteriorly is the retroperitoneal signature, but a well prepared team can hold B or C and defend it. Push teams to name the single finding that would flip their vote.</p>
+    </div>
+  </section>
+
+  <!-- ============ FACILITATION ============ -->
+  <section id="facilitation">
+    <p class="eyebrow">Instructor support &middot; experienced facilitator</p>
+    <h2>Facilitation guide</h2>
+
+    <h3>Sixty minute timing</h3>
+    <ul class="timeline">
+      <li><span class="clock">0:00 to 0:12</span><span class="what"><b>iRAT.</b> Individual answers to all ten integrative items. Use the 12 minute preset on the toolbar timer.</span></li>
+      <li><span class="clock">0:12 to 0:24</span><span class="what"><b>tRAT.</b> Same ten items by team consensus, simultaneous reveal, appeals taken in writing.</span></li>
+      <li><span class="clock">0:24 to 0:32</span><span class="what"><b>Clarification burst.</b> Address only the items that split teams. The likely split items are flagged in the Answer center.</span></li>
+      <li><span class="clock">0:32 to 0:54</span><span class="what"><b>Application.</b> Read the stimulus, teams commit to A, B, or C, simultaneous reveal, then defend through the branch questions and cross examine.</span></li>
+      <li><span class="clock">0:54 to 1:00</span><span class="what"><b>Debrief.</b> Name the single finding that decides the case, connect back to LO2 and LO3, preview the lab.</span></li>
+    </ul>
+
+    <h3>Discussion prompts for the application</h3>
+    <ul class="plain">
+      <li>What one finding in the stimulus most strongly separates a retroperitoneal source from an intraperitoneal one, and why does fluid behavior matter more than organ proximity here?</li>
+      <li>If the abdomen had been rigid and distended with shifting dullness, which letter would become stronger, and what does that tell you about how intraperitoneal blood behaves?</li>
+      <li>Trace the boundary a blade would cross to move from the flank into each of the three cavities in play. Name the structure at each boundary.</li>
+      <li>Match each candidate source to its drainage or access procedure, and state why the cavity, not the organ, decides where the needle goes.</li>
+    </ul>
+
+    <h3>Common misconceptions the RAT will surface</h3>
+    <p class="reading" style="font-size:14px;">Because every item integrates several concepts, a wrong answer usually marks a broken link between concepts, not a single missing fact. Watch for these.</p>
+    <table class="s">
+      <thead><tr><th style="width:60px;">Item</th><th>Integration failure to watch for and address</th></tr></thead>
+      <tbody>
+        <tr><td>Q1</td><td>Confusing the pleural and pericardial serous cavities, mislocating the heart's serous space outside the middle mediastinum, or matching the wrong access procedure to the cavity.</td></tr>
+        <tr><td>Q2</td><td>Generalizing one peritoneal relationship to both organs, missing that the spleen is intraperitoneal and the kidney retroperitoneal, then predicting the wrong bleed pattern from that error.</td></tr>
+        <tr><td>Q3</td><td>Treating the epidermis as vascular, or anchoring it with the wrong structure. The epidermis is avascular and anchored to the basement membrane, fed by diffusion from the dermis.</td></tr>
+        <tr><td>Q4</td><td>Linking an export protein to free ribosomes or smooth ER, or pairing a ductless endocrine cell with a holocrine or apocrine release mode rather than merocrine.</td></tr>
+        <tr><td>Q5</td><td>Crediting the wrong stratum or the wrong cell with regeneration. The stratum basale and its keratinocytes do it, not the stratum corneum or melanocytes.</td></tr>
+        <tr><td>Q6</td><td>Mismatching the germ layer, most connective tissue is mesoderm, or confusing dense regular with dense irregular collagen arrangement.</td></tr>
+        <tr><td>Q7</td><td>Mixing the two cadherin junctions. The adherens belt links to microfilaments, the desmosome plaque links to intermediate filaments.</td></tr>
+        <tr><td>Q8</td><td>Redefining proximal and distal, naming the wrong forearm region, or mapping a CT cross section to a plane other than transverse.</td></tr>
+        <tr><td>Q9</td><td>Forgetting the mesothelium is simple squamous epithelium, or that the synovial membrane is the one body membrane with no epithelium.</td></tr>
+        <tr><td>Q10</td><td>Swapping the lower quadrants for appendicitis and diverticulitis, or matching the peritoneal tap to the wrong cavity.</td></tr>
+        <tr><td>Q11</td><td>Assuming goosebumps are voluntary, so the arrector pili must be skeletal muscle, or naming the hair root plexus, a nerve ending, as the muscle.</td></tr>
+        <tr><td>Q12</td><td>Treating carotene, hemoglobin, or bilirubin as a type of melanin, or tying a skin color to the wrong pigment source.</td></tr>
+        <tr><td>Q13</td><td>Reversing the anterior and posterior borders, or flipping the superior thoracic inlet with the inferior diaphragm.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <h4>Quick reference card, in play this session</h4>
+      <ul class="plain" style="margin:0;">
+        <li><b>Serous membranes.</b> Two layers, every time. The parietal layer lines the wall, the visceral layer covers the organ.</li>
+        <li><b>SADPUCKER.</b> Suprarenals, Aorta and IVC, Duodenum (2 to 4), Pancreas (head, neck, body), Ureters, Colon (ascending and descending), Kidneys, Esophagus (abdominal segment), Rectum (lower).</li>
+        <li><b>Cavity to needle.</b> Pleural to thoracentesis, pericardial to pericardiocentesis, peritoneal to paracentesis, vertebral to lumbar puncture.</li>
+        <li><b>Bleed behavior.</b> Intraperitoneal blood spreads and irritates broadly, retroperitoneal blood stays hidden and presents as flank or back pain.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ANSWER CENTER ============ -->
+  <section id="answerCenterSection">
+    <p class="eyebrow">Instructor only</p>
+    <h2>Answer center</h2>
+    <div class="reveal-bar" id="revealBar">
+      <p>Keys and full rationales are hidden so you can screen share the iRAT safely. Reveal only when you are ready.</p>
+      <button class="btn gold" id="revealBtn" aria-expanded="false" aria-controls="answerCenter">Reveal instructor answer center</button>
+    </div>
+
+    <div id="answerCenter" hidden>
+      <h3>Answer key</h3>
+      <table class="s keytable">
+        <thead><tr><th>Q</th><th>Key</th><th>DOK</th><th class="concept">Concepts integrated and likely split</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="ans">C</td><td>3</td><td class="concept">Serous layers, mediastinal compartment, access route. Likely split with D.</td></tr>
+          <tr><td>2</td><td class="ans">A</td><td>3</td><td class="concept">LUQ organs, intra vs retro, bleed behavior.</td></tr>
+          <tr><td>3</td><td class="ans">D</td><td>3</td><td class="concept">Epithelial class, basement membrane anchor, avascular supply.</td></tr>
+          <tr><td>4</td><td class="ans">B</td><td>3</td><td class="concept">Protein organelles, endocrine duct status, release mode.</td></tr>
+          <tr><td>5</td><td class="ans">C</td><td>3</td><td class="concept">Strata, epidermal cell types, healing. Likely split with A.</td></tr>
+          <tr><td>6</td><td class="ans">A</td><td>3</td><td class="concept">Connective subtype, germ layer, failure mode.</td></tr>
+          <tr><td>7</td><td class="ans">B</td><td>3</td><td class="concept">Two cadherin junctions, cytoskeletal links. Likely split with C.</td></tr>
+          <tr><td>8</td><td class="ans">D</td><td>2</td><td class="concept">Regional term, directional term, imaging plane.</td></tr>
+          <tr><td>9</td><td class="ans">A</td><td>3</td><td class="concept">Serous build, tissue type, synovial comparison.</td></tr>
+          <tr><td>10</td><td class="ans">B</td><td>3</td><td class="concept">LLQ pattern, intra vs retro, cavity access. Likely split with C.</td></tr>
+          <tr><td>11</td><td class="ans">A</td><td>2</td><td class="concept">Arrector pili, smooth muscle, involuntary.</td></tr>
+          <tr><td>12</td><td class="ans">C</td><td>2</td><td class="concept">Eumelanin and pheomelanin, skin color sources. Beyond Week 1.</td></tr>
+          <tr><td>13</td><td class="ans">B</td><td>2</td><td class="concept">Directional terms applied to the mediastinal borders.</td></tr>
+        </tbody>
+      </table>
+      <p class="reading" style="font-size:13px;color:var(--teal-text);">Answer sequence for the core ten: C A D B C A B D A B. The additional items key A (Q11), C (Q12), and B (Q13). No identical answers fall consecutively in the running set.</p>
+
+      <h3>Full per option rationales</h3>
+
+      <div class="ratq">
+        <p class="rq-stem">Q1. Serous layers, compartment, access route. Key: C</p>
+        <p class="correct"><b>C is correct.</b> The serous cavity is the space between the parietal and visceral serous pericardium, the pericardium sits in the middle mediastinum, and that cavity is drained by pericardiocentesis. All three links hold.</p>
+        <ul class="why">
+          <li><b>A wrong.</b> Swaps the pericardium for the pleura, the wrong compartment, and thoracentesis, which drains the pleural cavity, not the pericardial.</li>
+          <li><b>B wrong.</b> Names the right cavity but the wrong compartment, the heart is in the middle, not the superior mediastinum, and pairs it with paracentesis, which taps the peritoneal cavity.</li>
+          <li><b>D wrong.</b> The space between the epicardium and the fibrous pericardium is not the serous cavity, places the heart in the posterior mediastinum, and uses lumbar puncture, which samples the vertebral cavity. The likely split, since the epicardium is a real serous layer.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q2. LUQ organs, peritoneal relationship, bleed behavior. Key: A</p>
+        <p class="correct"><b>A is correct.</b> In the LUQ the spleen is intraperitoneal, so its blood spreads freely and irritates the cavity, while the left kidney is retroperitoneal, so its blood stays contained behind the peritoneum and presents as flank pain. The relationship predicts the behavior.</p>
+        <ul class="why">
+          <li><b>B wrong.</b> Flips both relationships, the error of memorizing the organs but reversing which is intra and which is retro.</li>
+          <li><b>C wrong.</b> Over generalizes intraperitoneal to both, missing that the kidney is a SADPUCKER structure.</li>
+          <li><b>D wrong.</b> Over generalizes retroperitoneal to both, missing that the spleen is intraperitoneal.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q3. Epidermis classification, anchor, blood supply. Key: D</p>
+        <p class="correct"><b>D is correct.</b> The epidermis is stratified squamous epithelium for protection, anchored to the basement membrane, and avascular, so it is fed by diffusion from the vessels in the dermis. Three properties, one tissue.</p>
+        <ul class="why">
+          <li><b>A wrong.</b> Picks simple squamous, which is built for diffusion not protection, names a mucous membrane as the anchor, and claims its own capillaries, contradicting the avascular epidermis.</li>
+          <li><b>B wrong.</b> Picks transitional, a urinary tract tissue, and calls it richly vascular, again contradicting the avascular fact.</li>
+          <li><b>C wrong.</b> Picks an airway tissue and names a mesentery as the anchor, a peritoneal structure that has nothing to do with the skin.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q4. Organelles, duct status, release mode. Key: B</p>
+        <p class="correct"><b>B is correct.</b> A protein product is built on the rough ER and packaged by the Golgi, no duct means endocrine, and releasing the product intact by exocytosis is the merocrine mode. All three descriptors agree.</p>
+        <ul class="why">
+          <li><b>A wrong.</b> Smooth ER makes lipids not protein, exocrine requires a duct the stem rules out, and holocrine destroys the cell, which the stem also rules out.</li>
+          <li><b>C wrong.</b> Free ribosomes build cytosolic protein not export protein, and apocrine pinches off part of the cell rather than releasing intact.</li>
+          <li><b>D wrong.</b> Names the rough ER correctly but calls the cell exocrine, contradicting the no duct clue, and holocrine, contradicting the intact release.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q5. Strata, cell types, healing. Key: C</p>
+        <p class="correct"><b>C is correct.</b> The stratum basale is the deepest, dividing layer, and its keratinocytes regenerate the epidermis when a wound spares it. The strata order and the cell job line up.</p>
+        <ul class="why">
+          <li><b>A wrong.</b> The likely split. The stratum corneum is the dead surface layer, not the regenerating one, and melanocytes make pigment, they do not rebuild the epidermis.</li>
+          <li><b>B wrong.</b> The stratum lucidum is a thin clear layer in thick skin only, and dendritic (Langerhans) cells are immune patrols, not regenerators.</li>
+          <li><b>D wrong.</b> The stratum granulosum is where keratinization begins, not the dividing layer, and tactile (Merkel) cells serve touch, not regeneration.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q6. Connective subtype, germ layer, failure mode. Key: A</p>
+        <p class="correct"><b>A is correct.</b> Parallel collagen strong in one direction is dense regular connective tissue, most connective tissue including tendon arises from mesoderm, and a tendon tears when twisted because its strength is one directional. A tendon satisfies all three clues.</p>
+        <ul class="why">
+          <li><b>B wrong.</b> Calls the tendon dense irregular, whose collagen runs in all directions, and assigns it to ectoderm, which forms epidermis and nervous tissue, not connective tissue.</li>
+          <li><b>C wrong.</b> The dermis is dense irregular, not regular, and skin connective tissue is mesoderm, not endoderm.</li>
+          <li><b>D wrong.</b> Areolar is loose packing tissue, far too weak for a ligament that must bear a strong pull.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q7. Two cadherin junctions. Key: B</p>
+        <p class="correct"><b>B is correct.</b> The adherens junction is the adhesion belt linked to microfilaments, and the desmosome is the plaque linked to intermediate filaments that rivets cells in the epidermis and cardiac muscle. Both use cadherins, which is the clue that narrows the field.</p>
+        <ul class="why">
+          <li><b>A wrong.</b> Tight junctions seal rather than form a belt, and gap junctions are communication channels, neither uses cadherins for the jobs described.</li>
+          <li><b>C wrong.</b> The likely split. The desmosome is a plaque junction, not the belt, and the hemidesmosome anchors a cell to the basement membrane, not to a neighboring cell.</li>
+          <li><b>D wrong.</b> Gap and tight junctions are matched to roles that belong to the adherens junction and desmosome.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q8. Region, direction, imaging plane. Key: D</p>
+        <p class="correct"><b>D is correct.</b> The forearm is the antebrachial region, distal means farther from the trunk, and a CT slice is a transverse section. All three readings are correct together.</p>
+        <ul class="why">
+          <li><b>A wrong.</b> Brachial is the arm not the forearm, distal does not mean closer to the trunk, and a frontal section divides anterior from posterior, not a CT cross section.</li>
+          <li><b>B wrong.</b> Names the region correctly but redefines proximal as farther from the trunk, the reverse of its meaning, and picks a sagittal section.</li>
+          <li><b>C wrong.</b> Carpal is the wrist, distal is misdefined, and the oblique plane does not give the clean cross section of a CT slice.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q9. Serous build, tissue, synovial comparison. Key: A</p>
+        <p class="correct"><b>A is correct.</b> A serous membrane is the mesothelium, a simple squamous epithelium, over areolar connective tissue, and it differs from the synovial membrane, the one body membrane built from connective tissue alone with no epithelium.</p>
+        <ul class="why">
+          <li><b>B wrong.</b> Names stratified squamous rather than the simple squamous mesothelium, and wrongly equates serous and synovial membranes.</li>
+          <li><b>C wrong.</b> Picks an airway epithelium over fat, and the cutaneous membrane is the dry skin, a different membrane entirely.</li>
+          <li><b>D wrong.</b> Picks a urinary tract epithelium and confuses the serous membrane with a mucous membrane.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q10. LLQ pattern, peritoneal relationship, cavity access. Key: B</p>
+        <p class="correct"><b>B is correct.</b> LLQ pain in an older adult points to diverticulitis, the sigmoid colon there is intraperitoneal, and the peritoneal cavity is sampled by paracentesis. The pattern, the relationship, and the procedure all agree.</p>
+        <ul class="why">
+          <li><b>A wrong.</b> Appendicitis is the right lower quadrant pattern, and thoracentesis drains the pleural cavity, not the peritoneal.</li>
+          <li><b>C wrong.</b> The likely split. The descending colon is indeed retroperitoneal, but the organ behind LLQ diverticulitis is the sigmoid colon, which is intraperitoneal, and pericardiocentesis drains the heart sac, not the peritoneum.</li>
+          <li><b>D wrong.</b> Splenic injury is a left upper quadrant problem, and a lumbar puncture samples the vertebral cavity, not the peritoneal cavity.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q11. Arrector pili, muscle type, control. Key: A</p>
+        <p class="correct"><b>A is correct.</b> The arrector pili is the small smooth muscle attached to a hair follicle, and like all smooth muscle it is involuntary, which is why goosebumps appear on their own rather than on command.</p>
+        <ul class="why">
+          <li><b>B wrong.</b> Names the right muscle but calls it skeletal and voluntary. The error is assuming you can raise a hair on purpose. The arrector pili is smooth muscle and acts involuntarily.</li>
+          <li><b>C wrong.</b> The hair root plexus is the sensory nerve ending wrapped around the follicle that detects hair movement, not a muscle, so it cannot pull the hair upright.</li>
+          <li><b>D wrong.</b> The erector spinae is a skeletal muscle of the back. A name that sounds similar is the trap, it has nothing to do with raising a hair.</li>
+        </ul>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q12. Melanin types and skin color. Key: C</p>
+        <p class="correct"><b>C is correct.</b> The two forms of melanin are eumelanin, brown to black, and pheomelanin, red to yellow. A bluish skin color is the dark blood in the dermal vessels seen through the thin epidermis, an observation about what you are looking at, not the physiology behind it.</p>
+        <ul class="why">
+          <li><b>A wrong.</b> Carotene is a separate pigment source, not a type of melanin, and a bluish color is not caused by extra melanin.</li>
+          <li><b>B wrong.</b> Hemoglobin is the blood pigment in the dermal vessels, not a melanin, and pallor is not produced by carotene.</li>
+          <li><b>D wrong.</b> Bilirubin is a separate pigment, not a melanin, and redness is not a loss of melanin.</li>
+        </ul>
+        <p class="reading" style="font-size:13px;color:var(--teal-text);margin-top:8px;">Scope note: eumelanin and pheomelanin and the diagnostic skin colors are not in the Week 1 notes. This item is held at the pigment and observation level. The causes of these colors are physiology and are left out.</p>
+      </div>
+
+      <div class="ratq">
+        <p class="rq-stem">Q13. Directional terms and the mediastinal borders. Key: B</p>
+        <p class="correct"><b>B is correct.</b> The sternum forms the anterior border, the bodies of the thoracic vertebrae form the posterior border, and the diaphragm forms the inferior border. The remaining two borders are the thoracic inlet superiorly and the mediastinal pleura laterally.</p>
+        <ul class="why">
+          <li><b>A wrong.</b> Reverses the front to back axis, putting the vertebrae anterior and the sternum posterior, and places the thoracic inlet inferiorly when it is the superior boundary.</li>
+          <li><b>C wrong.</b> Flips the vertical axis. The diaphragm is the inferior border and the thoracic inlet the superior, not the reverse, and the sternum is anterior, not lateral.</li>
+          <li><b>D wrong.</b> Scrambles several pairs. The diaphragm is inferior, not anterior, the vertebrae are posterior, not superior, and the mediastinal pleura forms the lateral borders, not the posterior.</li>
+        </ul>
+      </div>
+
+      <h3>Application defense guide</h3>
+      <div class="callout navy">
+        <h4>Best supported answer and how to adjudicate</h4>
+        <p class="reading" style="margin:0 0 8px;">As written, the findings tilt toward <b>A, a retroperitoneal source</b>. Two findings carry the weight: the fluid does not move freely with position and sits against the posterior body wall, and the tenderness is localized to the flank and back rather than spreading across a soft abdomen. Both are the retroperitoneal signature from the notes, where a retroperitoneal bleed stays hidden and presents as flank or back pain.</p>
+        <p class="reading" style="margin:0 0 8px;"><b>Honor a defended B</b> if a team argues the spleen sits in the left upper quadrant near this wound. Push back with the single finding that argues against it: a soft, non distended abdomen with fluid that does not move freely is not what free intraperitoneal blood from a splenic injury produces, since intraperitoneal blood spreads and irritates the whole cavity.</p>
+        <p class="reading" style="margin:0;"><b>Honor a defended C</b> if a team reasons from the rib level. A wound below the 12th rib can cross the diaphragm into the pleural cavity because the diaphragm domes upward, so a thoracic injury can hide behind an abdominal entry point. The decisive teaching point: the cavity reached, not the entry skin region, sets the access procedure, pleural to thoracentesis, peritoneal to paracentesis.</p>
+      </div>
+
+      <h3>DOK verification summary</h3>
+      <p class="reading" style="font-size:13.5px;">With only ten items, every item is built to require reasoning across two to four concepts at once, so the correct answer cannot be reached by isolating one fact. Nine items are DOK 3, where the scenario is novel, the student weighs competing options, and the distractors break a specific link between concepts that a partial understanding would still find plausible, Q1 through Q7, Q9, and Q10. One item, Q8, is DOK 2, an applied read of a chart and an imaging plane across three vocabularies. No item is answerable by recall alone, and none requires the multi step clinical decision making reserved for the application exercise. Several items meet the DOK 4 integration test on their face, since the key requires connecting at least two content domains, but they are held at the readiness assurance level by testing the connection between foundational concepts rather than a full clinical decision.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>MedMasters Launch Studio (A MedMasters Collaborative Company) &middot; BIOL OO4 Human Anatomy &middot; Dr. Rennie &middot; TBL #1 readiness assurance and application. Grounded in the Week 1 course notes: Foundations, Tissues, Integumentary.</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------- Prework checkboxes with safe local persistence ----------
+  var STORE_KEY = "tbl01_bio004_prework";
+  function loadState(){
+    try{ return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }
+    catch(e){ return {}; }
+  }
+  function saveState(state){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+    catch(e){ /* storage blocked, degrade silently */ }
+  }
+  var state = loadState();
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.pw-item input[type=checkbox]'));
+  var progressTag = document.getElementById('pwProgress');
+
+  function refreshProgress(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    progressTag.textContent = done + ' of ' + boxes.length + ' complete';
+  }
+  boxes.forEach(function(box){
+    var item = box.closest('.pw-item');
+    var id = box.id;
+    if(state[id]){ box.checked = true; item.classList.add('done'); }
+    box.addEventListener('change', function(){
+      item.classList.toggle('done', box.checked);
+      state[id] = box.checked;
+      saveState(state);
+      refreshProgress();
+    });
+  });
+  refreshProgress();
+
+  // ---------- Section navigation pills ----------
+  document.querySelectorAll('.pill').forEach(function(pill){
+    pill.addEventListener('click', function(){
+      var id = pill.getAttribute('data-go');
+      var el = document.getElementById(id) || document.getElementById(id + 'Section');
+      if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+
+  // ---------- Phase timer ----------
+  var readout = document.getElementById('timer');
+  var startBtn = document.getElementById('timerStart');
+  var resetBtn = document.getElementById('timerReset');
+  var presets = Array.prototype.slice.call(document.querySelectorAll('.btn.preset'));
+  var totalSeconds = 12 * 60;
+  var remaining = totalSeconds;
+  var ticking = false;
+  var handle = null;
+
+  function fmt(s){
+    var m = Math.floor(s / 60);
+    var sec = s % 60;
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+  function render(){
+    readout.textContent = fmt(remaining);
+    readout.classList.toggle('warn', remaining <= 60);
+  }
+  function stop(){
+    ticking = false; startBtn.textContent = 'Start';
+    if(handle){ clearInterval(handle); handle = null; }
+  }
+  function start(){
+    if(ticking || remaining <= 0) return;
+    ticking = true; startBtn.textContent = 'Pause';
+    handle = setInterval(function(){
+      remaining = Math.max(0, remaining - 1);
+      render();
+      if(remaining === 0){ stop(); }
+    }, 1000);
+  }
+  startBtn.addEventListener('click', function(){ ticking ? stop() : start(); });
+  resetBtn.addEventListener('click', function(){ stop(); remaining = totalSeconds; render(); });
+  presets.forEach(function(p){
+    p.addEventListener('click', function(){
+      presets.forEach(function(x){ x.classList.remove('active'); });
+      p.classList.add('active');
+      totalSeconds = parseInt(p.getAttribute('data-min'), 10) * 60;
+      stop(); remaining = totalSeconds; render();
+    });
+  });
+  render();
+
+  // ---------- Answer center reveal ----------
+  var revealBtn = document.getElementById('revealBtn');
+  var center = document.getElementById('answerCenter');
+  var revealBar = document.getElementById('revealBar');
+  revealBtn.addEventListener('click', function(){
+    var open = center.hasAttribute('hidden');
+    if(open){
+      center.removeAttribute('hidden');
+      revealBtn.textContent = 'Hide instructor answer center';
+      revealBtn.setAttribute('aria-expanded', 'true');
+    } else {
+      center.setAttribute('hidden', '');
+      revealBtn.textContent = 'Reveal instructor answer center';
+      revealBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // ---------- Print scoping ----------
+  var printStudent = document.getElementById('printStudent');
+  var printFull = document.getElementById('printFull');
+  printStudent.addEventListener('click', function(){
+    document.body.classList.add('print-student');
+    window.print();
+  });
+  printFull.addEventListener('click', function(){
+    document.body.classList.remove('print-student');
+    if(center.hasAttribute('hidden')){ center.removeAttribute('hidden');
+      revealBtn.textContent = 'Hide instructor answer center';
+      revealBtn.setAttribute('aria-expanded', 'true');
+    }
+    window.print();
+  });
+  window.addEventListener('afterprint', function(){
+    document.body.classList.remove('print-student');
+  });
+})();
+</script>
+
+<!-- iframe height-sender: posts document height to the parent on load and on any size change -->
+<script>
+(function(){
+  "use strict";
+  var FRAME_ID = (function(){
+    try{
+      var p = new URLSearchParams(window.location.search);
+      return p.get('frameId') || 'tbl01-bio004';
+    }catch(e){ return 'tbl01-bio004'; }
+  })();
+  function sendHeight(){
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight
+    );
+    try{ parent.postMessage({ id: FRAME_ID, frameHeight: h }, '*'); }catch(e){}
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  if(typeof ResizeObserver !== 'undefined'){
+    try{ new ResizeObserver(sendHeight).observe(document.body); }catch(e){}
+  }
+  document.addEventListener('click', function(){ setTimeout(sendHeight, 60); });
+  setTimeout(sendHeight, 300);
+})();
+</script>
+</body>
+</html>
