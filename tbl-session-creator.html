@@ -179,6 +179,15 @@ footer { border-top: 1px solid var(--rule-soft); padding: 22px 64px; display: fl
 .sources a { color: var(--navy); }
 
 
+
+/* Key terms */
+.terms-toggle-wrap { display: flex; justify-content: flex-end; margin: -6px 0 18px; }
+.terms { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; }
+.term { padding: 12px 0; border-bottom: 1px solid var(--rule-soft); }
+.term dt { font-weight: 800; font-size: 14.5px; color: var(--navy); margin-bottom: 4px; }
+.term dd { font-size: 14px; color: var(--ink); line-height: 1.55; }
+@media (max-width: 760px) { .terms { grid-template-columns: 1fr; } }
+
 /* Platform chooser dialog */
 .ai-dialog { border: 1px solid var(--rule-soft); border-radius: var(--radius); box-shadow: 0 24px 48px rgba(6,10,24,0.28); padding: 36px 36px 28px; width: min(520px, calc(100vw - 32px)); margin: auto; background: var(--card); color: var(--ink); text-align: center; }
 .ai-dialog::backdrop { background: rgba(6,10,24,0.55); }
@@ -230,6 +239,54 @@ footer { border-top: 1px solid var(--rule-soft); padding: 22px 64px; display: fl
     </div>
     <span class="progress-count" id="progress-count" aria-hidden="true">0 / 15</span>
   </div>
+
+  <div class="terms-toggle-wrap">
+    <button type="button" class="btn btn-secondary btn-small" id="btn-terms" aria-expanded="false" aria-controls="terms-panel">Show key terms</button>
+  </div>
+  <section class="card hidden" id="terms-panel" aria-labelledby="h-terms">
+    <div class="card-head">
+      <div>
+        <h2 id="h-terms">Key terms</h2>
+        <p>What the TBL and question-writing terms in this tool mean.</p>
+      </div>
+    </div>
+    <dl class="terms">
+      <div class="term"><dt>Team-Based Learning (TBL)</dt><dd>A structured active-learning method. Students prepare before class, prove they are ready with a quiz, then spend most of class solving problems in permanent teams.</dd></div>
+      <div class="term"><dt>Prework</dt><dd>The readings, videos, or pages students complete before class. The RAT only tests what the prework covers.</dd></div>
+      <div class="term"><dt>Readiness assurance</dt><dd>The start-of-class sequence that checks preparation: iRAT, tRAT, appeals, then a short clarification.</dd></div>
+      <div class="term"><dt>RAT (Readiness Assurance Test)</dt><dd>A short multiple-choice quiz on the foundational ideas from the prework, usually 10 to 20 questions.</dd></div>
+      <div class="term"><dt>iRAT (individual RAT)</dt><dd>Each student takes the RAT alone, closed book, before talking to their team.</dd></div>
+      <div class="term"><dt>tRAT (team RAT)</dt><dd>The team takes the same RAT together and has to agree on each answer. They find out right away if they are correct.</dd></div>
+      <div class="term"><dt>IF-AT card</dt><dd>Immediate Feedback Assessment Technique. A scratch-off answer card that shows a star when the team scratches the correct answer. Teams keep scratching until they find it, and earn less credit for each extra try.</dd></div>
+      <div class="term"><dt>Confidence-weighted scoring</dt><dd>Students spread 4 points across the answer choices based on how sure they are, and earn the points placed on the correct answer.</dd></div>
+      <div class="term"><dt>Appeals</dt><dd>After the tRAT, a team can argue in writing that a question was unclear or that another answer is also correct. They must cite the prework. Only the teams that appeal get credit if the appeal is accepted.</dd></div>
+      <div class="term"><dt>Clarification</dt><dd>A short explanation from the instructor after the tRAT, aimed only at the questions teams missed most.</dd></div>
+      <div class="term"><dt>Parallel RAT</dt><dd>A second RAT with new questions on the same objectives, for retakes, make-ups, or review.</dd></div>
+      <div class="term"><dt>Application exercise</dt><dd>The main part of class. Teams use what they learned to make a decision about a realistic problem.</dd></div>
+      <div class="term"><dt>4S framework</dt><dd>The four rules for a good application exercise: Significant problem, Same problem, Specific choice, Simultaneous report.</dd></div>
+      <div class="term"><dt>Significant problem</dt><dd>A problem that matters to the students and that someone working in their future field would recognize.</dd></div>
+      <div class="term"><dt>Same problem</dt><dd>Every team works on the identical problem, so they can compare answers.</dd></div>
+      <div class="term"><dt>Specific choice</dt><dd>Each team has to commit to one answer from a short list, not write an open-ended discussion.</dd></div>
+      <div class="term"><dt>Simultaneous report</dt><dd>All teams reveal their choice at the same moment, for example by holding up lettered cards, so no team can copy another.</dd></div>
+      <div class="term"><dt>Defensible disagreement</dt><dd>The choice is written so that two well-prepared teams could pick different answers and each defend theirs. That disagreement drives the class discussion.</dd></div>
+      <div class="term"><dt>Backward design</dt><dd>Planning the application exercise first, then writing the RAT and prework to prepare students for it.</dd></div>
+      <div class="term"><dt>Depth of Knowledge (DOK)</dt><dd>Norman Webb&#x27;s four levels of thinking a task demands. The level describes the kind of thinking a task requires, not how hard it is.</dd></div>
+      <div class="term"><dt>DOK 1: Recall and reproduction</dt><dd>Remember a fact, term, or definition. Example: name the four compartments of the mediastinum.</dd></div>
+      <div class="term"><dt>DOK 2: Skills and concepts</dt><dd>Use a concept to interpret, classify, compare, or apply it to a familiar kind of problem. Example: classify organs as intraperitoneal or retroperitoneal.</dd></div>
+      <div class="term"><dt>DOK 3: Strategic thinking</dt><dd>Reason from evidence, explain why, or predict an outcome in a situation that is new to the student. Example: predict how blocking a channel changes the membrane potential.</dd></div>
+      <div class="term"><dt>DOK 4: Extended thinking</dt><dd>Pull together several ideas or content areas over a longer task, such as a multi-step case. In TBL this level belongs in the application exercise, not the RAT.</dd></div>
+      <div class="term"><dt>Single best answer</dt><dd>A multiple-choice item with four options and one best answer. This is the format IF-AT cards support.</dd></div>
+      <div class="term"><dt>Select all that apply (SATA)</dt><dd>An item with more than one correct option. IF-AT cards can&#x27;t score these, so they only work when the tRAT runs in an app.</dd></div>
+      <div class="term"><dt>Stem and lead-in</dt><dd>The stem is the question text and any scenario. The lead-in is the actual question at the end, for example &quot;Which structure is most likely injured?&quot;</dd></div>
+      <div class="term"><dt>Distractor</dt><dd>A wrong answer choice. Good distractors reflect real mistakes students make, so reviewing them teaches something.</dd></div>
+      <div class="term"><dt>Cover-the-options test</dt><dd>A well-written question can be answered by a prepared student before looking at the answer choices.</dd></div>
+      <div class="term"><dt>Competency</dt><dd>A specific skill from your course competency list, written as &quot;You should be able to...&quot;. The ones you check become the session&#x27;s learning objectives.</dd></div>
+      <div class="term"><dt>Yield</dt><dd>The priority tag on each competency in your course list: high, core, or support.</dd></div>
+      <div class="term"><dt>Peer evaluation</dt><dd>Teammates give each other specific feedback on preparation and contribution. It is one of the core elements of TBL.</dd></div>
+      <div class="term"><dt>InteDashboard</dt><dd>A TBL platform that runs iRATs, tRATs, and applications online. The tool can format questions for its bulk upload.</dd></div>
+    </dl>
+    <div class="btn-row"><button type="button" class="btn btn-secondary btn-small" id="btn-terms-close">Hide key terms</button></div>
+  </section>
 
   <!-- 01 Course and competencies -->
   <section class="card" aria-labelledby="h-course">
@@ -1301,6 +1358,17 @@ document.querySelectorAll(".dialog-link").forEach(function (l) { l.addEventListe
 $("ai-dialog").addEventListener("click", function (e) { if (e.target === this) closeChooser(); });
 $("ai-dialog").addEventListener("close", function () { var o = $("output"); if (!o.classList.contains("hidden") && document.activeElement === document.body) $("btn-copy").focus(); });
 $("btn-reset").addEventListener("click", resetForm);
+
+function setTerms(open) {
+  var btn = $("btn-terms"), panel = $("terms-panel");
+  panel.classList.toggle("hidden", !open);
+  btn.setAttribute("aria-expanded", open ? "true" : "false");
+  btn.textContent = open ? "Hide key terms" : "Show key terms";
+  if (open) panel.focus({ preventScroll: false }); else btn.focus();
+}
+$("terms-panel").setAttribute("tabindex", "-1");
+$("btn-terms").addEventListener("click", function () { setTerms($("terms-panel").classList.contains("hidden")); });
+$("btn-terms-close").addEventListener("click", function () { setTerms(false); });
 
 updateProgress();
 

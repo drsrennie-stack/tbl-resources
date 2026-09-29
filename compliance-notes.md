@@ -19,6 +19,7 @@ Target: WCAG 2.2 AA minimum, AAA where achievable.
 | 2.4.1 Bypass blocks | A | Skip link to main content |
 | 2.4.7 / 2.4.13 Focus visible and appearance | AA | 3px navy outline with 2px offset on every focusable element |
 | 3.3.1 / 3.3.3 Error identification and suggestion | AA | Errors named in text, aria-invalid set, message linked with aria-describedby, focus moves to first problem, count announced |
+| 4.1.2 Name, role, value | AA | Key terms toggle uses aria-expanded and aria-controls; platform chooser is a native modal dialog with a labeled heading, Esc to close, and a named close button |
 | 4.1.3 Status messages | AA | Form status, copy status, and competency count use role="status" or aria-live |
 | 2.3.3 Animation from interactions | AAA | prefers-reduced-motion turns off transitions, card lift, and smooth scrolling |
 
@@ -42,7 +43,7 @@ Target: WCAG 2.2 AA minimum, AAA where achievable.
 
 ## 4. Keyboard navigation flow
 
-Skip link, course select, module, topic, search, Select all shown, Clear selection, each competency checkbox, remove buttons on selected chips (focus moves to the next chip after removal), identity and objective fields, source options, RAT settings, application settings, peer evaluation, export options, Reset, Design my session prompt. After building, focus moves to the output card, then New answer key, Copy prompt, the prompt text (focusable for scrolling), the four AI links, the source links, and the footer link.
+Skip link, Show key terms, course select, module, topic, search, Select all shown, Clear selection, each competency checkbox, remove buttons on selected chips (focus moves to the next chip after removal), identity and objective fields, source options, RAT settings, application settings, peer evaluation, export options, Reset, Design my session prompt. After building, focus moves to the output card, then New answer key, Copy prompt, the prompt text (focusable for scrolling), the four AI links, the source links, and the footer link.
 
 Checked with an automated headless browser run. The full sequence has not yet been walked by hand.
 
