@@ -2,7 +2,7 @@
 
 ## 1. Project
 
-- Project: TBL Session Creator (MedMasters Launch Studio)
+- Project: TBL Session Creator (Solano Community College, BIO 004 and BIO 005)
 - Files covered: tbl-session-creator.html
 - Date: September 29, 2026
 
